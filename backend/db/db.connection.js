@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { config } from "dotenv";
 
-config({ path: "D:/shopease/backend/.env" });
+config({ path: "D:/InstaPost/backend/.env" });
 
 const mongoUrl = process.env.MONGODB;
 export const initializeDatabase = async () => {
