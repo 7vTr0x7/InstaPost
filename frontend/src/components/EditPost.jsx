@@ -6,7 +6,6 @@ import { editPost } from "../redux/slices/postSlice";
 const EditPost = ({ editHandler, post }) => {
   const [title, setTitle] = useState(post.title);
   const [description, setDescription] = useState(post.description);
-
   const dispatch = useDispatch();
 
   const editPostHandler = async () => {
@@ -22,9 +21,7 @@ const EditPost = ({ editHandler, post }) => {
         }
       );
 
-      if (!res.ok) {
-        console.log("Failed to get posts");
-      }
+      if (!res.ok) throw new Error("Failed to edit post");
 
       const data = await res.json();
       if (data) {
@@ -32,28 +29,26 @@ const EditPost = ({ editHandler, post }) => {
         toast.success("Post Edited");
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
 
   return (
-    <div className="bg-light   rounded-3 shadow-lg p-4">
-      <div>
-        <input
-          value={title}
-          type="text"
-          className="form-control"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
+    <div className="bg-light rounded-3 shadow-lg p-4">
+      <input
+        value={title}
+        type="text"
+        className="form-control"
+        onChange={(e) => setTitle(e.target.value)}
+      />
       <div className="my-3">
         <textarea
           value={description}
-          type="text"
           className="form-control"
-          onChange={(e) => setDescription(e.target.value)}></textarea>
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </div>
-      <div className="d-flex align-content-center justify-content-end gap-3 ">
+      <div className="d-flex justify-content-end gap-3">
         <button
           className="btn btn-light shadow-lg fw-semibold"
           onClick={editPostHandler}>
