@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { initializeDatabase } from "./db/db.connection.js";
 import postRouter from "./routes/post.js";
+import userRouter from "./routes/user.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ const corsOptions = {
 };
 
 app.use("/api", postRouter);
+app.use("/api", userRouter);
 
 app.use(cors(corsOptions));
 
