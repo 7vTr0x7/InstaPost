@@ -43,3 +43,16 @@ export const updatePost = async (req, res) => {
     res.status(505).json({ error: `Failed to get Post ${error}` });
   }
 };
+
+export const deletePost = async (req, res) => {
+  try {
+    const post = await InstaPost.findByIdAndDelete(req.params.postId);
+    if (post) {
+      res.json(post);
+    } else {
+      res.status(404).json({ error: "Post not found" });
+    }
+  } catch (error) {
+    res.status(505).json({ error: `Failed to get Post ${error}` });
+  }
+};
