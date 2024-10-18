@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import PostCard from "./../components/PostCard";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -28,7 +29,18 @@ const Posts = () => {
     fetchPosts();
   }, []);
 
-  return <div className="container my-5 d-flex justify-content-center"></div>;
+  return (
+    <div className="d-flex justify-content-center">
+      <div className=" my-5 container row">
+        {posts &&
+          posts.map((post) => (
+            <div key={post._id} className="col-md-4 mb-3">
+              <PostCard post={post} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 };
 
 export default Posts;
