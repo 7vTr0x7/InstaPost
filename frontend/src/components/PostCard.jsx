@@ -6,12 +6,16 @@ import { RiShareForwardLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { Toaster, toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { removePost } from "../redux/slices/postSlice";
 
 const PostCard = ({ post }) => {
   const [isFullText, setIsFullText] = useState(false);
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
-  const deleteHandler = async ({ postId }) => {
+  const dispatch = useDispatch();
+
+  const deleteHandler = async (postId) => {
     try {
       const res = await fetch(`http://localhost:4000/api/post/${postId}`, {
         method: "DELETE",
@@ -22,7 +26,9 @@ const PostCard = ({ post }) => {
       }
 
       const data = await res.json();
+      console.log(data);
       if (data) {
+        dispatch(removePost(postId));
         toast.success("Post Deleted");
       }
     } catch (error) {

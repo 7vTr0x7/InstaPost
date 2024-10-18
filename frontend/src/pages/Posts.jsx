@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PostCard from "./../components/PostCard";
+import { addPost } from "../redux/slices/postSlice";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
+  const dispatch = useDispatch();
+
   const user = useSelector((state) => state.user.user);
+  const allPosts = useSelector((state) => state.posts.posts);
 
   const fetchPosts = async () => {
     try {
@@ -19,15 +23,15 @@ const Posts = () => {
 
       const data = await res.json();
       setPosts(data);
+      dispatch(addPost(data));
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(posts);
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [allPosts?.length]);
 
   return (
     <div className="d-flex justify-content-center">
