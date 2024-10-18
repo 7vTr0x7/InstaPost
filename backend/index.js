@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { initializeDatabase } from "./db/db.connection.js";
+import postRouter from "./routes/post.js";
 
 const app = express();
 
@@ -10,6 +11,8 @@ const corsOptions = {
   origin: "*",
   credentials: true,
 };
+
+app.use("/api", postRouter);
 
 app.use(cors(corsOptions));
 
