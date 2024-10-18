@@ -1,4 +1,4 @@
-import InstaPost from "../models/instaPost.model";
+import InstaPost from "../models/instaPost.model.js";
 
 export const getPosts = async (req, res) => {
   try {
