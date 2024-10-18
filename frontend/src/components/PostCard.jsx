@@ -26,8 +26,8 @@ const PostCard = ({ post }) => {
 
       const data = await res.json();
       if (data) {
-        dispatch(removePost(postId));
         toast.success("Post Deleted");
+        dispatch(removePost(postId));
       }
     } catch (error) {
       toast.error(error.message);

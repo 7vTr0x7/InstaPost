@@ -27,6 +27,7 @@ const EditPost = ({ editHandler, post }) => {
       if (data) {
         dispatch(editPost({ id: post._id, title, description }));
         toast.success("Post Edited");
+        editHandler();
       }
     } catch (error) {
       toast.error(error.message);

@@ -12,6 +12,8 @@ const AddPost = ({ userId, close }) => {
   const dispatch = useDispatch();
 
   const addPostHandler = async () => {
+    toast.success("Please Wait");
+
     try {
       const res = await fetch(
         `https://insta-post-backend.vercel.app/api/post`,
@@ -32,8 +34,8 @@ const AddPost = ({ userId, close }) => {
       if (!res.ok) throw new Error("Failed to upload post");
 
       const data = await res.json();
-      dispatch(addNewPost(data));
       toast.success("Post Uploaded");
+      dispatch(addNewPost(data));
       close(false);
     } catch (error) {
       toast.error(error.message);
