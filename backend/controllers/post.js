@@ -28,8 +28,7 @@ export const addPost = async (req, res) => {
 };
 export const addMultiPost = async (req, res) => {
   try {
-    const newPost = new InstaPost.insertMany(req.body);
-    const post = await newPost.save();
+    const post = await InstaPost.insertMany(req.body);
     if (post) {
       res.json(post);
     } else {
