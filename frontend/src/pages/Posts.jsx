@@ -16,7 +16,7 @@ const Posts = () => {
   const fetchPosts = async () => {
     try {
       const res = await fetch(
-        `http://localhost:4000/api/posts/user/${user?.userId}`
+        `https://insta-post-backend.vercel.app/api/posts/user/${user?.userId}`
       );
 
       if (!res.ok) {

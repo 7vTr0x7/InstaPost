@@ -15,18 +15,21 @@ const AddPost = ({ userId, close }) => {
 
   const addPostHandler = async () => {
     try {
-      const res = await fetch(`http://localhost:4000/api/post`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          user: userId,
-          image: imageURL,
-          title,
-          description,
-        }),
-      });
+      const res = await fetch(
+        `https://insta-post-backend.vercel.app/api/post`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: userId,
+            image: imageURL,
+            title,
+            description,
+          }),
+        }
+      );
 
       if (!res.ok) {
         console.log("Failed to get posts");

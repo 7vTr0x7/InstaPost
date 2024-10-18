@@ -11,13 +11,16 @@ const EditPost = ({ editHandler, post }) => {
 
   const editPostHandler = async () => {
     try {
-      const res = await fetch(`http://localhost:4000/api/post/${post._id}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ title, description }),
-      });
+      const res = await fetch(
+        `https://insta-post-backend.vercel.app/api/post/${post._id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ title, description }),
+        }
+      );
 
       if (!res.ok) {
         console.log("Failed to get posts");
