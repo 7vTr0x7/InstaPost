@@ -12,6 +12,12 @@ const postSlice = createSlice({
         posts: action.payload,
       };
     },
+    addNewPost: (state, action) => {
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
+      };
+    },
     removePost: (state, action) => {
       return {
         ...state,
@@ -31,6 +37,6 @@ const postSlice = createSlice({
   },
 });
 
-export const { addPost, removePost, editPost } = postSlice.actions;
+export const { addPost, removePost, editPost, addNewPost } = postSlice.actions;
 
 export default postSlice.reducer;

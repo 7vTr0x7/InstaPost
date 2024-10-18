@@ -79,13 +79,13 @@ const PostCard = ({ post }) => {
               {isOptionOpen ? (
                 <p
                   className="m-0"
-                  style={{ height: "30px", cursor: "pointer" }}>
+                  style={{ fontSize: "25px", cursor: "pointer" }}>
                   <RxCross2 />
                 </p>
               ) : (
                 <p
                   className="m-0"
-                  style={{ height: "30px", cursor: "pointer" }}>
+                  style={{ fontSize: "20px", cursor: "pointer" }}>
                   <BsThreeDotsVertical />
                 </p>
               )}
@@ -98,12 +98,14 @@ const PostCard = ({ post }) => {
               <span>
                 {isFullText ? post.description : post.description.slice(0, 30)}
               </span>
-              <span
-                className="px-2"
-                style={{ fontSize: "12px", cursor: "pointer" }}
-                onClick={() => setIsFullText((prev) => !prev)}>
-                {!isFullText ? "show more" : "show less"}
-              </span>
+              {post.description.length > 30 && (
+                <span
+                  className="px-2"
+                  style={{ fontSize: "12px", cursor: "pointer" }}
+                  onClick={() => setIsFullText((prev) => !prev)}>
+                  {!isFullText ? "show more" : "show less"}
+                </span>
+              )}
             </p>
           </div>
           <div>
