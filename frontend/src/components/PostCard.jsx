@@ -71,6 +71,7 @@ const PostCard = ({ post }) => {
                   top: "40px",
                   backgroundColor: "#fff",
                   zIndex: 100,
+                  cursor: "pointer",
                 }}>
                 <p className="m-0" onClick={toggleEdit}>
                   Edit
