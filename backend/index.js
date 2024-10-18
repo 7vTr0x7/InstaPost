@@ -12,11 +12,10 @@ const corsOptions = {
   origin: "*",
   credentials: true,
 };
+app.use(cors(corsOptions));
 
 app.use("/api", postRouter);
 app.use("/api", userRouter);
-
-app.use(cors(corsOptions));
 
 initializeDatabase();
 
