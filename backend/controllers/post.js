@@ -2,7 +2,7 @@ import InstaPost from "../models/instaPost.model.js";
 
 export const getPosts = async (req, res) => {
   try {
-    const posts = await InstaPost.find({ user: req.body.userId }).populate(
+    const posts = await InstaPost.find({ user: req.params.userId }).populate(
       "user"
     );
     if (posts.length > 0) {
