@@ -26,6 +26,19 @@ export const addPost = async (req, res) => {
     res.status(505).json({ error: `Failed to get Post ${error}` });
   }
 };
+export const addMultiPost = async (req, res) => {
+  try {
+    const newPost = new InstaPost.insertMany(req.body);
+    const post = await newPost.save();
+    if (post) {
+      res.json(post);
+    } else {
+      res.status(404).json({ error: "Post not found" });
+    }
+  } catch (error) {
+    res.status(505).json({ error: `Failed to get Post ${error}` });
+  }
+};
 
 export const updatePost = async (req, res) => {
   try {
