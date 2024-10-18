@@ -53,7 +53,7 @@ const EditPost = ({ editHandler, post }) => {
         <button
           className="btn btn-light shadow-lg fw-semibold"
           onClick={editPostHandler}>
-          Edit
+          Save
         </button>
         <button
           className="btn btn-light shadow-lg fw-semibold"
